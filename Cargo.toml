@@ -1,0 +1,19 @@
+[package]
+name = "rev-proxy"
+version = "0.1.0"
+edition = "2021"
+description = "A small, fast reverse HTTP proxy built on Tokio and Hyper 1.x"
+license = "MIT"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+hyper = { version = "1", features = ["http1", "server", "client"] }
+hyper-util = { version = "0.1", features = ["tokio", "client-legacy", "http1", "server-graceful"] }
+http-body-util = "0.1"
+bytes = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[profile.release]
+lto = true
+codegen-units = 1
